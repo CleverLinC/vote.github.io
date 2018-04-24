@@ -1,0 +1,107 @@
+@import "normalize";
+
+@function ptr($p){
+  @return ($p/64)+rem;
+}
+html,body{
+  height: 100%;
+  //overflow: hidden;
+}
+a{
+  text-decoration: none;
+}
+main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .swiper-container {
+    flex: 1;
+    width: 100%;
+    //position: relative;
+
+      //background-color: pink;
+      .swiper-slide {
+        height: 100%;
+        width: 100%;
+        padding-top: ptr(90);
+        background-color: pink;
+
+    }
+    .swiper-pagination {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: ptr(90);
+      background-color: white;
+      width: 100%;
+      display: flex;
+      //align-items: center;
+      justify-content: space-around;
+      .swiper-pagination-bullet {
+        width: 30%;
+        height: 100%;
+        margin: 0;
+        //left: 0;
+        border-radius: 0px;
+        background-color: #fff;
+        // display: block;
+        box-sizing: border-box;
+        padding: 0;
+        @for $i from 1 to 3{
+          &:nth-child(#{$i})::before {
+               @if $i==1{
+                 content: '关注';
+               }
+            @if $i==2{
+              content:"订阅";
+            }
+
+            font-size: ptr(34);
+          }
+        }
+
+
+
+      }
+      .swiper-pagination-bullet-active{
+        border-bottom: 3px solid green;
+      }
+    }
+  }
+
+  .bottom {
+    flex-basis: ptr(100);
+  }
+}
+footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  height:ptr(100);
+  left: 0;
+  background-color:#d3d3d3 ;
+  a{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    opacity: 0.7;
+
+
+    img{
+      height:ptr(50)
+    }
+    &:nth-child(3) img{
+      height: ptr(70);
+    }
+    span{
+      font-size: 0.5rem;
+    }
+  }
+  .active{
+    opacity: 1;
+  }
+}
